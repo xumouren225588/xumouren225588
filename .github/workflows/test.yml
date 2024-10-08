@@ -1,0 +1,23 @@
+1name: Checkbox Example
+
+on:
+  workflow_dispatch:
+    inputs:
+      checkbox_option:
+        description: 'Select Checkbox'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  check_checkbox:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Checkbox Selection
+      run: |
+        echo "Checkbox selected: ${{ github.event.inputs.checkbox_option }}"
+        if [ "${{ github.event.inputs.checkbox_option }}" = "true" ]; then
+          echo "Checkbox was selected."
+        else
+          echo "Checkbox was not selected."
+        fi
