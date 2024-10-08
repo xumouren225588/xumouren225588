@@ -1,23 +1,15 @@
-1name: Checkbox Example
-
+name: Checkbox Workflow
 on:
   workflow_dispatch:
     inputs:
-      checkbox_option:
-        description: 'Select Checkbox'
+      checkboxOption:
+        description: '一个复选框选项'
         required: false
-        default: 'false'
-        type: boolean
-
+        default: false
 jobs:
-  check_checkbox:
+  exampleJob:
     runs-on: ubuntu-latest
     steps:
-    - name: Check Checkbox Selection
-      run: |
-        echo "Checkbox selected: ${{ github.event.inputs.checkbox_option }}"
-        if [ "${{ github.event.inputs.checkbox_option }}" = "true" ]; then
-          echo "Checkbox was selected."
-        else
-          echo "Checkbox was not selected."
-        fi
+      - name: 输出复选框状态
+        run: |
+          echo "复选框是否被勾选：${{ inputs.checkboxOption }}"
